@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PAN Card Number Validation</title>
+</head>
+<body>
+
+<h2>Enter PAN Card Number</h2>
+
+<form name="panForm" action="#">
+    <input type="text" name="panNumber">
+    <input type="button" name="submit" value="Submit" onclick="validatePAN(document.panForm.panNumber)">
+</form>
+
+<script>
+function validatePAN(panNumber) {
+    // Regular expression to match the PAN card format (e.g., ABCDE1234F)
+    var regex = /^([A-Z]{5}[0-9]{4}[A-Z])$/;
+
+    if (regex.test(panNumber.value)) {
+        alert('Valid PAN Card Number');
+    } else {
+        alert('Invalid PAN Card Number');
+    }
+}
+</script>
+
+</body>
+</html>
