@@ -1,16 +1,17 @@
--- Function to square positive numbers
-squarePositive :: [Double] -> [Double]
-squarePositive = map (\x -> if x > 0 then x * x else x)
-
+sqpos :: [Double] -> [Double]
+sqpos [] = []
+sqpos (x:xs) 
+        | x>0 = x*x : sqpos xs
+        | otherwise = x: sqpos xs
+        
 main :: IO ()
-main = do
-    putStrLn "Enter a list of numbers separated by spaces:"
-    inputStr <- getLine
-    let numbers = map read (words inputStr) :: [Double]
+main = do 
+let mylist = [7,-3,5,-9]
+let sqposlist = sqpos mylist
+putStrLn "Squared positive numbers:"
+print sqposlist
 
-    let squaredNumbers = squarePositive numbers
-    putStrLn "Squared positive numbers:"
-    print squaredNumbers
+
 
 -- Function to square negative numbers in a list
 squareNegative :: [Double] -> [Double]
