@@ -1,47 +1,48 @@
 import java.util.Scanner;
 
 class Complex {
-    public int real, imaginary;
+    private double real;
+    private double imaginary;
 
-    public void getNo() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter real part: ");
-        real = input.nextInt();
-        System.out.print("Enter imaginary part: ");
-        imaginary = input.nextInt();
+    public Complex(double r, double i) {
+        real = r;
+        imaginary = i;
+    }
+
+    public Complex add(Complex c) {
+        double newReal = real + c.real;
+        double newImaginary = imaginary + c.imaginary;
+        return new Complex(newReal, newImaginary);
     }
 
     public void display() {
+   
         System.out.println(real + " + " + imaginary + "i");
     }
 
-    public Complex add(Complex c2) {
-        Complex c3 = new Complex();
-        c3.real = real + c2.real;
-        c3.imaginary = imaginary + c2.imaginary;
-        return c3;
-    }
-}
-
-public class Main {
     public static void main(String[] args) {
-        Complex c1 = new Complex();
-        Complex c2 = new Complex();
-        Complex c3;
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter the first complex number:");
-        c1.getNo();
-        System.out.print("You entered: ");
-        c1.display();
+        System.out.print("Enter the real and imaginary parts of the first complex number: ");
+        double real1 = scanner.nextDouble();
+        double imaginary1 = scanner.nextDouble();
 
-        System.out.println("Enter the second complex number:");
-        c2.getNo();
-        System.out.print("You entered: ");
-        c2.display();
+        System.out.print("Enter the real and imaginary parts of the second complex number: ");
+        double real2 = scanner.nextDouble();
+        double imaginary2 = scanner.nextDouble();
 
-        c3 = c1.add(c2);
+        Complex complex1 = new Complex(real1, imaginary1);
+        Complex complex2 = new Complex(real2, imaginary2);
 
-        System.out.println("Result:");
-        c3.display();
+        Complex sum = complex1.add(complex2);
+
+        System.out.println("Complex Number 1: ");
+        complex1.display();
+
+        System.out.println("Complex Number 2: ");
+        complex2.display();
+
+        System.out.println("Sum of Complex Numbers: ");
+        sum.display();
     }
 }
