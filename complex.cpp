@@ -4,47 +4,44 @@ using namespace std;
 class Complex {
 private:
     double real;
-    double imaginary;
+    double imag;
 
 public:
-    Complex(double r = 0, double i = 0) : real(r), imaginary(i) {}
+    Complex(double r, double i) : real(r), imag(i) {}
 
-    Complex operator+(Complex c) {
-        Complex sum;
-        sum.real = real + c.real;
-        sum.imaginary = imaginary +c.imaginary;
-        return sum;
+    Complex operator+( Complex other) {
+        return Complex(real + other.real, imag + other.imag);
     }
 
-     void display()
-    {
-        cout<<real<<" + "<<imaginary<<"i"<<endl;
+    void displayComplex() {
+        cout << real << " + " << imag << "i";
     }
-
 };
 
 int main() {
-    double real1, imaginary1, real2, imaginary2;
-
+    double real1, imag1, real2, imag2;
     cout << "Enter the real and imaginary parts of the first complex number: ";
-    cin >> real1 >> imaginary1;
+    cin >> real1 >> imag1;
 
     cout << "Enter the real and imaginary parts of the second complex number: ";
-    cin >> real2 >> imaginary2;
+    cin >> real2 >> imag2;
 
-    Complex complex1(real1, imaginary1);
-    Complex complex2(real2, imaginary2);
+    Complex complex1(real1, imag1);
+    Complex complex2(real2, imag2);
 
     Complex sum = complex1 + complex2;
 
     cout << "Complex Number 1: ";
-    complex1.display();
+    complex1.displayComplex();
+    cout << endl;
 
     cout << "Complex Number 2: ";
-    complex2.display();
+    complex2.displayComplex();
+    cout << endl;
 
     cout << "Sum of Complex Numbers: ";
-    sum.display();
+    sum.displayComplex();
+    cout << endl;
 
     return 0;
 }
